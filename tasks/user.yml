@@ -22,14 +22,14 @@
     mode: "0700"
   when: item.ssh_public_key is defined or item.ssh_private_key is defined
 
-- name: Ensure users authorized keys are present (if applicable)
+- name: Ensure users authorized keys are present
   ansible.posix.authorized_key:
     user: "{{ item.name }}"
     state: present
     key: "{{ item.ssh_public_key }}"
   when: item.ssh_public_key is defined
 
-- name: Ensure users private keys are present (if applicable).
+- name: Ensure users private keys are present
   ansible.builtin.copy:
     content: "{{ item.ssh_private_key }}"
     dest: "/home/{{ item.name }}/.ssh/{{ item.ssh_private_key_name | default('id_rsa') }}"
