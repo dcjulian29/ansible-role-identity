@@ -1,0 +1,6 @@
+---
+- name: Ensure specified groups are present
+  ansible.builtin.group:
+    name: "{{ item.name }}"
+    gid: "{{ item.gid | default(omit) }}"
+    state: present

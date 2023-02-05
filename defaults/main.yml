@@ -1,0 +1,31 @@
+---
+identity_groups: []
+# - name: testgroup1
+#   gid: 987
+# - name: testgroup2
+#   gid: 988
+
+identity_users: []
+# - name: testuser
+#   comment: Some Cool Service Account
+#   create_home: yes
+#   generate_ssh_key: yes
+#   group: testuser
+#   groups: testgroup1,testgroup2
+#   home: "{{ item.home | default(omit) }}"
+#   hosts:
+#     - centos8
+#     - debian10
+#   password: "VeryStrongPa$$word4"
+#   shell: /bin/bash
+#   ssh_private_key: |
+#     -----BEGIN RSA PRIVATE KEY-----
+#     MIIEogIBAAKCAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzI
+#     w+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoP
+#     ...
+#     NE5OgEXk2wVfZczCZpigBKbKZHNYcelXtTt/nP3rsCuGcM4h53s=
+#     -----END RSA PRIVATE KEY-----
+#   ssh_public_key: "ssh-ed25519 ANzaC1yc2EA...KHgKLVcBaeKQ== bot@example.com"
+#   sudoers_nopassword: yes
+#   sudoers_password: no # Equivalent to sudoers_nopassword
+#   uid: 987

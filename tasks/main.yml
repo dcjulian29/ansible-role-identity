@@ -1,0 +1,14 @@
+---
+- name: Include group tasks
+  ansible.builtin.include_tasks: group.yml
+  loop: "{{ identity_groups }}"
+  when:
+    - identity_groups | length > 0
+    - (item.hosts is not defined) or (inventory_hostname_short in item.hosts)
+
+- name: Include user tasks
+  ansible.builtin.include_tasks: user.yml
+  loop: "{{ identity_users }}"
+  when:
+    - identity_users | length > 0
+    - (item.hosts is not defined) or (inventory_hostname_short in item.hosts)
