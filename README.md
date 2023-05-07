@@ -1,6 +1,6 @@
 # Ansible Role: identity
 
-[![CI](https://github.com/dcjulian29/ansible-role-identity/actions/workflows/ci.yml/badge.svg)](https://github.com/dcjulian29/ansible-role-identity/actions/workflows/ci.yml) [![GitHub Issues](https://img.shields.io/github/issues-raw/dcjulian29/ansible-role-identity.svg)](https://github.com/dcjulian29/ansible-role-identity/issues)
+[![Lint](https://github.com/dcjulian29/ansible-role-identity/actions/workflows/lint.yml/badge.svg)](https://github.com/dcjulian29/ansible-role-identity/actions/workflows/lint.yml) [![GitHub Issues](https://img.shields.io/github/issues-raw/dcjulian29/ansible-role-identity.svg)](https://github.com/dcjulian29/ansible-role-identity/issues)
 
 This an Ansible role to manage users and groups within the OS space.
 
@@ -28,12 +28,4 @@ ansible-galaxy install -r requirements.yml
 
 ## Dependencies
 
-None
-
-## Role Variables
-
-TODO
-
-## Example Playbook
-
-The examples directory include one or more example playbooks.
+- None
