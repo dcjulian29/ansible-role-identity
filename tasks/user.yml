@@ -45,7 +45,7 @@
     line: '{{ item.name }} ALL=(ALL) NOPASSWD: ALL'
     state: present
     validate: 'visudo -cf %s'
-    mode: 0644
+    mode: "0644"
   when: item.sudoers_nopassword is defined and item.sudoers_nopassword
 
 - name: Ensure user accounts to password sudoers
@@ -55,5 +55,5 @@
     line: '{{ item.name }} ALL=(ALL) ALL'
     state: present
     validate: 'visudo -cf %s'
-    mode: 0644
+    mode: "0644"
   when: item.sudoers_password is defined and item.sudoers_password
