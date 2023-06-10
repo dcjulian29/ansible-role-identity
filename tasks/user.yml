@@ -15,12 +15,14 @@
 
 - name: Ensure SSH directory exists in user home directory
   ansible.builtin.file:
-    path: "/home/{{ item.name }}/.ssh"
+    path: "{{ item.home }}/.ssh"
     state: directory
     owner: "{{ item.name }}"
     group: "{{ item.name }}"
     mode: "0700"
-  when: item.ssh_public_key is defined or item.ssh_private_key is defined
+  when:
+    - item.home is defined
+    - item.ssh_public_key is defined or item.ssh_private_key is defined
 
 - name: Ensure users authorized keys are present
   ansible.posix.authorized_key:
@@ -32,11 +34,13 @@
 - name: Ensure users private keys are present
   ansible.builtin.copy:
     content: "{{ item.ssh_private_key }}"
-    dest: "/home/{{ item.name }}/.ssh/{{ item.ssh_private_key_name | default('id_rsa') }}"
+    dest: "{{ item.home }}/.ssh/{{ item.ssh_private_key_name | default('id_rsa') }}"
     owner: "{{ item.name }}"
     group: "{{ item.name }}"
     mode: "0600"
-  when: item.ssh_private_key is defined
+  when:
+    - item.home is defined
+    - item.ssh_private_key is defined
 
 - name: Ensure user accounts are password-less sudoers
   ansible.builtin.lineinfile:
@@ -46,7 +50,9 @@
     state: present
     validate: 'visudo -cf %s'
     mode: "0644"
-  when: item.sudoers_nopassword is defined and item.sudoers_nopassword
+  when:
+    - item.sudoers_nopassword is defined
+    - item.sudoers_nopassword
 
 - name: Ensure user accounts to password sudoers
   ansible.builtin.lineinfile:
@@ -56,4 +62,6 @@
     state: present
     validate: 'visudo -cf %s'
     mode: "0644"
-  when: item.sudoers_password is defined and item.sudoers_password
+  when:
+    - item.sudoers_password is defined
+    - item.sudoers_password
