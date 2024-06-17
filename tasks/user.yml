@@ -44,7 +44,7 @@
 
 - name: Ensure user accounts are password-less sudoers
   ansible.builtin.lineinfile:
-    dest: /etc/sudoers
+    dest: "/etc/sudoers.d/{{ item.name }}"
     regexp: '^{{ item.name }}'
     line: '{{ item.name }} ALL=(ALL) NOPASSWD: ALL'
     state: present
@@ -56,7 +56,7 @@
 
 - name: Ensure user accounts to password sudoers
   ansible.builtin.lineinfile:
-    dest: /etc/sudoers
+    dest: "/etc/sudoers.d/{{ item.name }}"
     regexp: '^{{ item.name }}'
     line: '{{ item.name }} ALL=(ALL) ALL'
     state: present
